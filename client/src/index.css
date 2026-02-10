@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Oswald', sans-serif;
+
+  /* Industrial Blue & Slate Theme */
+  --background: 210 20% 98%;
+  --foreground: 222 47% 11%;
+
+  --primary: 221 83% 33%; /* Dark Blue #1e3a8a */
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 215 25% 27%; /* Slate Gray #334155 */
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+
+  --accent: 217 91% 60%; /* Lighter blue for accents */
+  --accent-foreground: 222 47% 11%;
+
+  --destructive: 0 84% 60%; /* Alert Red */
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 221 83% 33%;
+  
+  --radius: 0.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight text-slate-900;
+  }
+}
+
+/* Custom Animations */
+@keyframes enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-enter {
+  animation: enter 0.4s ease-out forwards;
+}
+
+.glass-card {
+  @apply bg-white border border-border shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+.stat-card {
+  @apply bg-white rounded-xl p-6 border border-border/60 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative overflow-hidden;
+}
+
+.stat-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, transparent 50%, rgba(30, 58, 138, 0.05) 50%);
+  border-radius: 0 0.75rem 0 100%;
+}
